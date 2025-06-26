@@ -1,0 +1,23 @@
+# 1. Base image with Go toolchain
+FROM golang:1.21-alpine
+
+# 2. Set working dir inside container
+WORKDIR /app
+
+
+# 4. Copy the rest of your source code
+COPY . .
+
+# 3. Copy go.mod/go.sum first for dependency caching
+#COPY go.mod go.sum ./
+#RUN go mod download
+
+# 5. Compile your Go binary
+#RUN go build -o main .
+
+# 6. Document the port
+EXPOSE 8001
+
+# 7. Default command to run
+CMD ["./main"]
+

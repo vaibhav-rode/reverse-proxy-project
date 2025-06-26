@@ -1,0 +1,19 @@
+# 1. Base image with Python runtime
+FROM python:3.10-slim
+
+# 2. Working directory
+WORKDIR /app
+
+# 3. Copy requirements & install first (for caching)
+#COPY requirements.txt .
+#RUN pip install --no-cache-dir -r requirements.txt
+
+# 4. Copy the rest of your Python code
+COPY . .
+
+# 5. Document the port your app listens on
+EXPOSE 8002
+
+# 6. Default command to run Flask app
+CMD ["python", "app.py"]
+
